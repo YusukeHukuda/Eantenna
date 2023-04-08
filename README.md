@@ -1,24 +1,34 @@
-# README
+# <E.antenna>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+観光活性化コミュニティサイト
+<...>
 
-Things you may want to cover:
+### テーマを選んだ理由
+近所の廃れていく商店街や施設を見て
+その古い雰囲気を武器にして
+ノスタルジックなそのままをアピールすれば
+そういったものが好きな人間が集まるのではと考えました。
+<...>
 
-* Ruby version
+### ターゲットユーザ
+古い雰囲気が好きな方
+<...>
 
-* System dependencies
+### 主な利用シーン
+その地域への観光計画補助
+投稿による価値観の共有
+<...>
 
-* Configuration
+## 設計書
+<...>
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
