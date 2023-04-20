@@ -2,9 +2,13 @@
   <%= render "public/shared/error_messages", resource: resource %>
   <%= form_with model: @user, url: user_registration_path do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="col-lg-3"><%= f.label :name, "名前" %></div>
+  <div class="col-lg-3"><%= f.text_field :name, autofocus: true, placeholder: "サンプル太郎", class: "form-control border-dark" %></div>
+
+  <div class="row">
+    <div class="col-lg-3"><%= f.label :email, "メールアドレス" %></div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-3"><%= f.email_field :email, autocomplete: "email", placeholder: "sample@gmail.com", class: "form-control border-dark" %></div>
   </div>
 
   <div class="field">
