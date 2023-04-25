@@ -1,2 +1,30 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-1"></div>
+    <h4 class="col-lg-3 mt-5 text-center"
+        style="background-color: #EEEEEE">
+          マイページ
+    </h4>
+  </div>
+  <div class="row mt-4">
+    <div class="col-xl-1"></div>
+    <h5 class="col-xl-2 text-center">登録情報</h5>
+  </div>
+  <div class="row pt-3">
+    <div class="col-xl-1"></div>
+    <div class="col-xl-10">
+      <table class='table table-bordered text-center'>
+        <tbody>
+          <tr>
+            <td>氏名</td>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
