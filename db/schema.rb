@@ -53,12 +53,12 @@ ActiveRecord::Schema.define(version: 2023_04_19_093316) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "body", null: false
-    t.string "tag_list", null: false
+    t.string "title"
+    t.string "body"
+    t.string "tag_list"
     t.boolean "posted_flag", default: false, null: false
-    t.string "latitude", null: false
-    t.string "longitude", null: false
+    t.string "latitude"
+    t.string "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -72,10 +72,10 @@ ActiveRecord::Schema.define(version: 2023_04_19_093316) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "self_introduction", null: false
+    t.string "self_introduction"
     t.boolean "is_deleted", default: false, null: false
-    t.string "latitude", null: false
-    t.string "longitude", null: false
+    t.string "latitude"
+    t.string "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

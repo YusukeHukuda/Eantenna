@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/unsubscribe'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+  
 # 顧客用
 # URL /users/sign_in ...
   devise_for :users, controllers: {
@@ -23,8 +15,14 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'about', to: 'public/homes#about'
 
+  get '/users' => "public/users#show"
+
   scope module: :public do
-    resources :posts, only: [:new, :index, :create, :edit, :update, :destroy]
+    resources :posts, only: [:new, :show, :index, :create, :edit, :update, :destroy] do
+      get :search, on: :collection
+    end
+  end
+    
   end
 
   # 管理者用
