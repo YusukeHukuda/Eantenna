@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 # 顧客用
 # URL /users/sign_in ...
   devise_for :users, controllers: {
@@ -20,10 +20,11 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :posts, only: [:new, :show, :index, :create, :edit, :update, :destroy] do
       get :search, on: :collection
+      post :search, on: :collection
     end
   end
-    
-  end
+
+
 
   # 管理者用
   # URL /admin/sign_in ...
@@ -33,4 +34,4 @@ Rails.application.routes.draw do
 
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+  end

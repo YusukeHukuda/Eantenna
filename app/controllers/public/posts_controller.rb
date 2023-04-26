@@ -26,16 +26,14 @@ class Public::PostsController < ApplicationController
 
   def edit
   end
-  
+
   def search
-    if params[:keyword].present?
-      @posts = Post.where('caption LIKE ?', "%#{params[:keyword]}%")
-      @keyword = params[:keyword]
-    else
-      Post.none
-    end
+    #Viewのformで取得したパラメータをモデルに渡す
+    @keyword = params[:post][:search] if params[:post]
+    @posts_all = Post.search(@keyword)
+    @posts = Kaminari.paginate_array(@posts_all).page(params[:page]).per(10)
   end
-  
+
 end
 
 private

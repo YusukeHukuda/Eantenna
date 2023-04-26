@@ -9,4 +9,10 @@ class Post < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+
+  # Postテーブルのcontentカラムを検索する
+  def self.search(search)
+    return Post.all unless search
+    Post.where(['body LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
+  end
 end

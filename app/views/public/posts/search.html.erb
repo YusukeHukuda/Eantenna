@@ -1,0 +1,14 @@
+<div class="col-md-8">
+    <h3>検索結果</h3>
+    <p>
+      検索キーワード: "<%= @keyword %>"  <br>
+      一致した記事: <%= @posts_all.count  %>
+    </p>
+    <%= paginate @posts %>
+    <ul class="posts">
+      <% @posts.each do |post| %>
+        <%= post.title %>
+      <% end %>
+    </ul>
+    <%= paginate @posts %>
+  </div>
