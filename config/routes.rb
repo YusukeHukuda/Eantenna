@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
 # 顧客用
 # URL /users/sign_in ...
   devise_for :users, controllers: {
@@ -27,6 +22,7 @@ Rails.application.routes.draw do
       get :search, on: :collection
       post :search, on: :collection
     end
+    resource :likes, only: [:create, :destroy]
   end
 
 

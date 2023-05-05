@@ -1,3 +1,12 @@
-<% @posts.each do |tag| %>
-<%= link_to "##{@tag.name}", posts_path(@tag), class: 'smaller tag_list' %>
+<% @posts.each do |post| %>
+    <% post.tags.each do |tag| %>
+    <%= link_to post_path(post.id) do %>
+    <%= image_tag post.get_image(50, 50) %>
+      <!--<p>投稿ユーザー画像：<%#= image_tag 'sample-author1.jpg' %></p>-->
+      <p>タイトル：<%= post.title %></p>
+      <p>本文：<%= post.body %></p>
+      <p>ユーザーネーム：<%#= post_image.user.name %></p>
+      <% end %>
+    <%= link_to "##{tag.name}", posts_path(tag), class: 'smaller tag_list' %>
+    <% end %>
 <% end %>

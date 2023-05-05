@@ -18,7 +18,7 @@
             <%= f.text_field :search, placeholder: "キーワード検索" %>
             <% f.submit %>
           <% end %>
-           <% @tag_lists&.each do |list| %>
+           <% @tag_lists.each do |list| %>
            <%= link_to list.name, posts_path(tag_id: list.id) %>
            <% end %>
         </div>
