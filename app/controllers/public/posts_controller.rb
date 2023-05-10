@@ -34,7 +34,11 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @user = User.find(params[:id])
+    @comments = @post.comments
+    @comment = current_user.comments.new
+    @post_tags = @post.tags
+    @tag_lists = Tag.all
+    # @user = User.find(params[:id])
   end
 
   def edit
@@ -52,5 +56,5 @@ end
 private
 
   def post_params
-        params.require(:post).permit(:title, :body, :tag_list, :image, :latitude, :longitude, :tag_id, :user_id, :name)
+        params.require(:post).permit(:title, :body, :tag_list, :image, :latitude, :longitude, :tag_id, :user_id, :name, :address)
   end

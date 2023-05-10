@@ -7,6 +7,6 @@
       <p>本文：<%= post.body %></p>
       <p>ユーザーネーム：<%#= post_image.user.name %></p>
       <% end %>
-    <%= link_to "##{tag.name}", posts_path(tag), class: 'smaller tag_list' %>
+    <%= link_to "##{tag.name}", posts_path(tag_id: tag.id), class: 'smaller tag_list' %>
     <% end %>
 <% end %>

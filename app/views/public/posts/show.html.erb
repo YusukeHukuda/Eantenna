@@ -19,7 +19,7 @@
             <td>
               <%#= link_to users_path(@user) do %>
                 <%#= image_tag @user.get_profile_image(100,100) %>
-                <%= @user.name %>
+                <%= @post.name %>
               <%# end %>
             </td>
             <td><%= @post.title %></td>
@@ -30,6 +30,55 @@
             <td><%#= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
             <%# end %>
           </tr>
+
+          <h5>住所</h5>
+            <p><%= @post.address %></p>
+
+            <!-- Googleマップ表示エリア(地図を表示) -->
+            <div id='map'></div>
+
+            <style>
+            #map {
+              height: 600px;
+              width: 600px;
+            }
+            </style>
+
+            <!-- Googleマップ表示用の Javascript -->
+            <script>
+              function initMap(){
+                // 地図の位置情報(緯度・経度)を取得
+                let mapPosition = {lat: <%= @post.latitude || 0 %> , lng: <%= @post.longitude || 0 %> };
+                let map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: mapPosition
+                });
+                let transitLayer = new google.maps.TransitLayer();
+                transitLayer.setMap(map);
+
+                let contentString = '【住所】<%= @post.address %>';
+                let infowindow = new google.maps.InfoWindow({
+                  content: contentString
+                });
+
+                let marker = new google.maps.Marker({
+                  position: mapPosition,
+                  map: map,
+                  title: contentString
+                });
+
+                marker.addListener('click', function(){
+                  infowindow.open(map, marker);
+                });
+              }
+              </script>
+
+              <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+         <% @post_tags.each do |tag| %>
+         <%= link_to tag.name, posts_path(tag_id: tag.id) %>
+         <%= "(#{tag.posts.count})" %>
+         <% end %>
         </tbody>
          <% if @post.liked_by?(current_user) %>
             <p>
@@ -44,6 +93,19 @@
               <% end %>
             </p>
           <% end %>
+
+          <h2>コメントする</h2>
+            <%= form_with model:[@post, @comment], method: :post do |f| %>
+            <%= f.text_area :comment_content %>
+            <%= f.hidden_field :post_id, value: @post.id %>
+            <%= f.submit 'コメントする' %>
+          <% end %>
+
+          <h2>コメント一覧</h2>
+          <% @comments.each do |comment| %>
+            <%= comment.comment_content %>
+          <% end %>
+
       </table>
     </div>
   </div>

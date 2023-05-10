@@ -19,10 +19,11 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :posts, only: [:new, :show, :index, :create, :edit, :update, :destroy] do
+      resource :likes, only: [:create, :destroy]
+      resources :comments, only: [:create]
       get :search, on: :collection
       post :search, on: :collection
     end
-    resource :likes, only: [:create, :destroy]
   end
 
 
