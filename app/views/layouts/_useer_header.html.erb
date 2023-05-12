@@ -1,0 +1,61 @@
+<% if user_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to users_path, class: 'nav-link text-light border border-dark py-1' do %>
+            <button class="btn">マイページ</button>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_post_path,class: 'nav-link text-light border border-dark py-1 ms-3' do %>
+            <button class="btn">投稿する</button>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to likes_path,class: 'nav-link text-light border border-dark py-1 ms-3' do %>
+            <button class="btn">お気に入り</button>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light border border-dark py-1 ms-3' do %>
+               <button class="btn">ログアウト</button>
+          <% end %>
+        </li>
+          <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <%= form_with(url: search_posts_path, scope: :post, local: true) do |f| %>
+             <%= f.text_field :search, placeholder: "キーワード検索" %>
+             <% f.submit %>
+          <% end %>
+             <% @tag_lists.each do |list| %>
+             <%= link_to list.name, posts_path(tag_id: list.id) %>
+             <% end %>
+        </div>
+      </ul>
+    </div>
+<% else %>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <%= link_to about_path, class: 'nav-link text-light border border-dark py-1' do %>
+            <button class="btn">About</button>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to posts_path,class: 'nav-link text-light border border-dark py-1 ms-3' do %>
+            <button class="btn">投稿一覧</button>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_user_registration_path,class: 'nav-link text-light border border-dark py-1 ms-3' do %>
+            <button class="btn">新規登録</button>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_user_session_path,class: 'nav-link text-light border border-dark py-1 ms-3' do %>
+               <button class="btn">ログイン</button>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+<% end %>

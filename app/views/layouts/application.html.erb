@@ -5,27 +5,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/b1267ac2cc.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-      <header>
-        <div class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <%= form_with(url: search_posts_path, scope: :post, local: true) do |f| %>
-            <%= f.text_field :search, placeholder: "キーワード検索" %>
-            <% f.submit %>
-          <% end %>
-           <% @tag_lists.each do |list| %>
-           <%= link_to list.name, posts_path(tag_id: list.id) %>
-           <% end %>
-        </div>
+    <header>
+      <haeder>
+        <%= render 'layouts/header' %>
       </haeder>
-
+    </header>
     <main>
       <%= yield %>
     </main>
+    <hooter>
+      <div class="row border-bottom border-dark" style="height:100px";></div>
+    </hooter>
   </body>
 </html>
