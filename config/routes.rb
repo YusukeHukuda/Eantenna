@@ -17,6 +17,12 @@ Rails.application.routes.draw do
 
   get '/users' => "public/users#show"
 
+  resources :users do
+    member do
+      get :likes
+    end
+  end
+
   scope module: :public do
     resources :posts, only: [:new, :show, :index, :create, :edit, :update, :destroy] do
       resource :likes, only: [:create, :destroy]

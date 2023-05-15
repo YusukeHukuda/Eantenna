@@ -59,3 +59,4 @@ gem 'ransack'
 gem 'kaminari'
 gem "dotenv-rails"
 gem "geocoder"
+gem 'font-awesome-sass'
