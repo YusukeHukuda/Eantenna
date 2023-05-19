@@ -16,6 +16,7 @@
       <table class='table table-bordered text-center'>
         <tbody>
           <tr>
+            <td><%= image_tag @user.get_image(100,100) %></td>
             <td>氏名</td>
             <td><%= @user.name %></td>
           </tr>

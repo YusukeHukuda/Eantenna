@@ -11,8 +11,8 @@ class Post < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  def self.posts_serach(search)
-   Post.where(['title LIKE ? OR body LIKE ?', "%#{search}%", "%#{search}%"])
+  def self.serach(keyword)
+   Post.where(['title LIKE ? OR body LIKE ?', "%#{keyword}%", "%#{keyword}%"])
   end
 
   def save_posts(tags)

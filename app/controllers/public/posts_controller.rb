@@ -46,9 +46,9 @@ class Public::PostsController < ApplicationController
 
   def search
     #Viewのformで取得したパラメータをモデルに渡す
-    @keyword = params[:post][:search] if params[:post]
-    @posts_all = Post.search(@keyword)
-    @posts = Kaminari.paginate_array(@posts_all).page(params[:page]).per(10)
+    @posts = Post.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "search"
   end
 
 end

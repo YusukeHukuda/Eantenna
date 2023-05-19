@@ -13,16 +13,14 @@
   </head>
 
   <body>
-    <header>
-      <haeder>
-        <%= render 'layouts/header' %>
-      </haeder>
+    <haeder>
+      <%= render 'layouts/header' %>
     </header>
     <main>
       <%= yield %>
     </main>
-    <hooter>
-      <div class="row border-bottom border-dark" style="height:100px";></div>
-    </hooter>
+    <footer>
+      <div class="fixed-bottom bg-dark" style="height:100px ;"></div>
+    </footer>
   </body>
 </html>
