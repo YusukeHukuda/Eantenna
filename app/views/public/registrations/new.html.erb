@@ -1,19 +1,37 @@
-<h2>新規登録</h2>
+<div class="container">
+  <div class="row">
+    <h2>新規登録</h2>
+  </div>
   <%= render "public/shared/error_messages", resource: resource %>
   <%= form_with model: @user, url: user_registration_path do |f| %>
+  <div class="form-group">
+    <div class="row">
+      <%= f.label "画像", class: "col-lg-3" %>
+      <%= f.file_field :profile_image, class: "col-md-5 form-control-file image", accept: 'image/*' %>
+    </div>
+  </div>
 
-  <div class="row mb-3">
-        <%= f.label "画像", class: "col-md-3 col-form-label" %>
-        <%= f.file_field :image, class: "col-md-5 form-control-file image", accept: 'image/*' %>
-      </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-3"><%= f.label :name, "名前" %></div>
+      <div class="col-lg-3"><%= f.text_field :name, autofocus: true, placeholder: "サンプル太郎", class: "form-control border-dark" %></div>
+    </div>
+  </div>
 
-  <div class="col-lg-3"><%= f.label :name, "名前" %></div>
-  <div class="col-lg-3"><%= f.text_field :name, autofocus: true, placeholder: "サンプル太郎", class: "form-control border-dark" %></div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-3"><%= f.label :email, "メールアドレス" %></div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3"><%= f.email_field :email, autocomplete: "email", placeholder: "sample@gmail.com", class: "form-control border-dark" %></div>
+    </div>
+  </div>
 
-  <div class="row">
-    <div class="col-lg-3"><%= f.label :email, "メールアドレス" %></div>
-    <div class="col-lg-1"></div>
-    <div class="col-lg-3"><%= f.email_field :email, autocomplete: "email", placeholder: "sample@gmail.com", class: "form-control border-dark" %></div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-3"><%= f.label :self_introduction, "ひとこと" %></div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-3"><%= f.text_field :self_introduction, autofocus: true, placeholder: "こんにちは", class: "form-control border-dark" %></div>
+    </div>
   </div>
 
   <div class="field">

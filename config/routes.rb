@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   end
 
   root to: 'public/homes#top'
-  get 'about', to: 'public/homes#about'
-
+  get '/about' => "public/homes#about"
   get '/users' => "public/users#show"
+  get '/users/edit' => "public/users#edit"
 
   resources :users do
     member do

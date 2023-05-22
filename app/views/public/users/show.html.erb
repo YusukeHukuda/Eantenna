@@ -1,31 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-xl-1"></div>
-    <h4 class="col-lg-3 mt-5 text-center"
-        style="background-color: #EEEEEE">
-          マイページ
-    </h4>
-  </div>
-  <div class="row mt-4">
-    <div class="col-xl-1"></div>
-    <h5 class="col-xl-2 text-center">登録情報</h5>
-  </div>
-  <div class="row pt-3">
-    <div class="col-xl-1"></div>
-    <div class="col-xl-10">
-      <table class='table table-bordered text-center'>
-        <tbody>
+    <div class="col-md-3">
+    <h4 class="mt-1 pl-1"><i class="fa-regular fa-address-card fa-lg"></i>マイページ</h4>
+      <table class='table text-center'>
+          <thead>
+            <%= image_tag @user.get_image(100,100), class: "rounded-circle mb-2" %>
+          </thead>
+
           <tr>
-            <td><%= image_tag @user.get_image(100,100) %></td>
-            <td>氏名</td>
-            <td><%= @user.name %></td>
+            <th>Name</th>
+            <th><%= @user.name %></th>
           </tr>
           <tr>
-            <td>メールアドレス</td>
-            <td><%= @user.email %></td>
+            <th>Introduction</th>
+            <th style="font-size:12px;"><%= @user.self_introduction %></th>
           </tr>
-        </tbody>
       </table>
+    <div class="row">
+      <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-cog"></i>
+      <% end %>
+    </div>
+  </div>
+    </div>
+      <div class="col-md-8 offset-md-1">
+        <h4>aaa</h4>
     </div>
   </div>
 </div>
