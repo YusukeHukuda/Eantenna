@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-    <h4 class="mt-1 pl-1"><i class="fa-regular fa-address-card fa-lg"></i>マイページ</h4>
-      <table class='table text-center'>
+      <h4 class="mt-1 pl-1">マイページ</h4>
+        <table class='table text-center'>
           <thead>
-            <%= image_tag @user.get_image(100,100), class: "rounded-circle mb-2" %>
+            <%= image_tag @user.get_image(150,150), class: "rounded-circle mb-2 d-block mx-auto" %>
           </thead>
 
           <tr>
@@ -15,16 +15,16 @@
             <th>Introduction</th>
             <th style="font-size:12px;"><%= @user.self_introduction %></th>
           </tr>
-      </table>
-    <div class="row">
-      <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
-        <i class="fas fa-user-cog"></i>
-      <% end %>
-    </div>
-  </div>
+        </table>
+      <div class="row">
+        <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
     </div>
       <div class="col-md-8 offset-md-1">
-        <h4>aaa</h4>
+        <h4 class="mt-1 pl-1">投稿一覧</h4>
+      </div>
     </div>
   </div>
 </div>
