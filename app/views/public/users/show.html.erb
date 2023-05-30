@@ -25,26 +25,17 @@
 
       <div class="col-md-8 offset-md-1">
         <h4 class="mt-1 pl-1">投稿一覧</h4>
-          <table class='table'>
-            <thead>
-              <tr>
-                <th></th>
-                <th>Title</th>
-                <th>Opinion</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
+              <% @posts.each do |post| %>
+              <div class="card bg-dark" style="width: 150px;">
+                <%= image_tag post.get_image(150,150), class: "rounded" %></th>
+                <%= link_to post_path(post.id) do %>
+                <div class="card-body">
+                <p class="card-text text-white" style="font-size:15px;"><%= post.title %></p>
+                <% end %>
+                </div>
 
-            <tbody>
-              <% @posts.each do |pos| %>
-              <tr>
-                <td><%= image_tag current_user.posts.get_image(150,150) %></td>
-                <td><%= pos.title %></td>
-                <td><%= pos.body %></td>
-              </tr>
+              </div>
               <% end %>
-            </tbody>
-        </table>
       </div>
     </div>
   </div>
