@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   get '/about' => "public/homes#about"
   get '/users' => "public/users#show"
   get '/users/edit' => "public/users#edit"
-  get '/users/favorite' => "public/users#favorite"
+  get '/users' => "public/users#update"
+  get '/users/favorites' => "public/users#favorite"
 
   resources :users do
     member do
