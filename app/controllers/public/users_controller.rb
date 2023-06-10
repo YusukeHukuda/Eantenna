@@ -15,18 +15,26 @@ class Public::UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
+    @tag_lists = Tag.all
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(current_user.id)
     if @user.update(user_params)
-      redirect_to user_path(params[:id])
+      flash[:notice] = "保存に成功しました。"
+      redirect_to users_path
+
     else
-      render :edit
+      render :show
     end
   end
 
   def unsubscribe
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:name, :email, :self_introduction, :is_deleted)
   end
 end

@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about' => "public/homes#about"
   get '/users' => "public/users#show"
-  get '/users/edit' => "public/users#edit"
-  get '/users' => "public/users#update"
+  get '/users/information/edit' => "public/users#edit"
+  patch '/users/information' => "public/users#update"
   get '/users/favorites' => "public/users#favorite"
 
   resources :users do
