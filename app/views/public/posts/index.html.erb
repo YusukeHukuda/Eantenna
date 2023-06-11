@@ -1,12 +1,32 @@
-<% @posts.each do |post| %>
-    <% post.tags.each do |tag| %>
-    <%= link_to post_path(post.id) do %>
-    <%= image_tag post.get_image(50, 50) %>
-      <!--<p>投稿ユーザー画像：<%#= image_tag 'sample-author1.jpg' %></p>-->
-      <p>タイトル：<%= post.title %></p>
-      <p>本文：<%= post.body %></p>
-      <p>ユーザーネーム：<%#= post_image.user.name %></p>
-      <% end %>
-    <%= link_to "##{tag.name}", posts_path(tag_id: tag.id), class: 'smaller tag_list' %>
-    <% end %>
-<% end %>
+<div class='container mt-4 col-12'>
+
+    <h4 class="text-center">商品一覧</h4>
+    <div class="row">
+      <div class="mx-auto">
+        <div class="card-deck" style="width: 90rem;"> <!--カードを横向きに-->
+        <% @posts.each do |post| %>
+          <% post.tags.each do |tag| %>
+          <div class="card">
+
+
+              <%= image_tag post.get_image(200, 200) %>
+              <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= post.body %></p>
+              </div>
+
+
+              <%= link_to "##{tag.name}", posts_path(tag_id: tag.id), class: 'smaller tag_list' %>
+
+              <%= link_to post_path(post.id), class: "btn btn-outline-secondary btn-block" do %>
+                <h5 class="text-dark">いいね一覧</h5>
+              <% end %>
+              </div>
+          <% end %>
+        <% end %>
+
+        </div>
+
+    </div>
+  </div>
+</div>
