@@ -1,2 +1,6 @@
 @use '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.main-content {
+  margin-bottom: 70px; /* フッターとの被りを解消 */
+}

@@ -17,10 +17,14 @@
       <%= render 'layouts/header' %>
     </header>
     <main>
-      <%= yield %>
+      <div class="main-content">
+        <%= yield %>
+      </div>
     </main>
-    <footer>
-      <div class="fixed-bottom bg-dark" style="height:100px ;"></div>
+    <footer class="footer">
+      <div class="fixed-bottom mt-5 text-center bg-dark" style="height:50px;">
+        <p class=text-white>E.antenna</p>
+      </div>
     </footer>
   </body>
 </html>
