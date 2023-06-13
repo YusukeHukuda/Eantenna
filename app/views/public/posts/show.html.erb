@@ -1,22 +1,31 @@
-<div class="container ">
-  <p id="notice">
-    <%= notice %>
-  </p>
-    <div class="col-md-8 offset-md-1">
-      <h2>Book detail</h2>
-      <table class="table table-hover table-inverse">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-            <th colspan="3">photo</th>
-          </tr>
-        </thead>
+<div class="container">
+  <div class="row">
+    <p id="notice">
+      <%= notice %>
+    </p>
+    <h2 class="text-center mx-auto orange-underline">　投稿詳細　</h2>
+    </div>
 
-        <tbody>
-          <tr>
-            <td>
+      <div class="row col-md-8">
+
+        <div class="card" style="width: 40rem;">
+        <%= image_tag @post.get_image(600,600) %>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+          <table class="table table-hover table-inverse">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Title</th>
+                <th>Opinion</th>
+                <th colspan="3">photo</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
               <%#= link_to users_path(@user) do %>
                 <%#= image_tag @user.get_profile_image(100,100) %>
                 <%= @post.name %>
@@ -24,12 +33,14 @@
             </td>
             <td><%= @post.title %></td>
             <td><%= @post.body %></td>
-            <td><%= image_tag @post.get_image(100,100) %></td>
+            <td></td>
             <%# if user_signed_in? && current_user.id == @post.user_id %>
             <td><%#= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success btn-sm" %></td>
             <td><%#= link_to "Destroy", book_path(@book), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %></td>
             <%# end %>
           </tr>
+          </table>
+          </div>
 
           <h5>住所</h5>
             <p><%= @post.address %></p>
@@ -94,19 +105,21 @@
             </p>
           <% end %>
 
+          <h2>コメント一覧</h2>
+          <% @post.comments.each do |comment| %>
+            <%= comment.comment_content %>
+          <% end %>
+
           <h2>コメントする</h2>
             <%= form_with model:[@post, @comment], method: :post do |f| %>
-            <%= f.text_area :comment_content %>
+            <%= f.text_area :comment_content, placeholder: "コメントをここに"  %>
             <%= f.hidden_field :post_id, value: @post.id %>
             <%= f.submit 'コメントする' %>
           <% end %>
 
-          <h2>コメント一覧</h2>
-          <% @comments.each do |comment| %>
-            <%= comment.comment_content %>
-          <% end %>
 
-      </table>
-    </div>
+
+
+
   </div>
 </div>

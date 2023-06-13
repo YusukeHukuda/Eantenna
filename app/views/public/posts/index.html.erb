@@ -7,20 +7,20 @@
         <% post.tags.each do |tag| %>
           <div class="card">
             <%= image_tag post.get_image(200, 200) %>
-              <div class="card-body">
-                <h5 class="card-title"><%= post.title %></h5>
-                <p class="card-text"><%= post.body %></p>
-              </div>
-            <div class="m-2">
-                <p class="card-text"><%= link_to "##{tag.name}", posts_path(tag_id: tag.id), class: 'smaller tag_list' %></p>
-                  <%= link_to post_path(post.id), class: "btn btn-outline-secondary btn-block" do %>
-                <h5 class="text-dark">続きを読む</h5>
-                <% end %>
-              </div>
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= post.body %></p>
             </div>
-          <% end %>
-          <% end %>
-         </div>
-        </div>
+            <div class="m-2">
+              <p class="card-text"><%= link_to "##{tag.name}", posts_path(tag_id: tag.id), class: 'smaller tag_list' %></p>
+                <%= link_to post_path(post.id), class: "btn btn-outline-secondary btn-block" do %>
+                  <h5 class="text-white bg-black">続きを読む</h5>
+                <% end %>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
       </div>
     </div>
+  </div>
+</div>
