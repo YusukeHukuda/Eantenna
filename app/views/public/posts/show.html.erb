@@ -6,21 +6,23 @@
     <h2 class="text-center mx-auto orange-underline">　投稿詳細　</h2>
     </div>
       <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-7">
 
         <div class="card" style="width: 40rem;">
         <%= image_tag @post.get_image(600,600) %>
         </div>
       </div>
 
-      <div class="col-md-4">
-          <table class="table table-hover table-inverse">
-                <th>Title</th>
-                <th><%= @post.body %</th>
-                <th>Opinion</th>
-                <th colspan="3">photo</th>
-          </table>
-          </div>
+      <div class="col-md-5">
+        <table class="table table-hover table-inverse">
+          <tr>
+          <th>Title</th>
+          <th><%= @post.body %></th>
+          </tr>
+          <th>Opinion</th>
+
+        </table>
+      </div>
           </div>
 
           <h5>住所</h5>
