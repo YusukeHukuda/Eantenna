@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   belongs_to :user
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
@@ -7,9 +10,6 @@ class Post < ApplicationRecord
   # accepts_nested_attributes_for :tags
   attr_accessor :name
   has_one_attached :image
-
-  geocoded_by :address
-  after_validation :geocode
 
   def self.serach(keyword)
    Post.where(['title LIKE ? OR body LIKE ?', "%#{keyword}%", "%#{keyword}%"])

@@ -21,3 +21,33 @@
   background-image: -webkit-linear-gradient(left, #fa709a 0%, #fee140 100%);
   background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
 }
+
+.posted_detail_heading {
+  padding: 1rem 2rem;
+  border-left: 4px solid #000;
+}
+
+.posted_detail_comment {
+  padding: 0rem 0rem 0rem 0.5rem;
+  border-left: 4px solid #000;
+}
+
+.tags {
+  position: relative;
+  display: inline-block;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  color: #fff;
+  border-radius: 100vh 0 0 100vh;
+  background: #ff9742;
+}
+
+.tags:before {
+  position: absolute;
+  top: calc(50% - 7px);
+  left: 10px;
+  width: 14px;
+  height: 14px;
+  content: '';
+  border-radius: 50%;
+  background: #fff;
+}
