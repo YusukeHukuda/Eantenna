@@ -1,13 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-      <% if admin_signed_in? %>
-      <i class="fa-solid fa-tower-cell" style="color: #ff9742;"></i>
-        <a class="navbar-brand" href="/admin"><strong>E.antenna</strong></a>
-        <%= render "layouts/admin_header" %>
-      <% else %>
-      <i class="fa-solid fa-tower-cell" style="color: #ff9742;"></i>
-        <a class="navbar-brand" href="/"><strong>E.antenna</strong></a>
-        <%= render "layouts/useer_header" %>
-      <% end %>
-  </div>
-</nav>
+<% if admin_signed_in? %>
+  <%= render "layouts/admin_header" %>
+<% else %>
+  <%= render "layouts/useer_header" %>
+<% end %>
