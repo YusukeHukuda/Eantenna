@@ -1,6 +1,8 @@
 <% if user_signed_in? %>
-  <div class="background-header border-header" style="background-image: url(<%= asset_path 'antenna.jpg' %>);">
+<div class="container-fluid">
 
+
+  <div class="background-header border-header" style="background-image: url(<%= asset_path 'antenna.jpg' %>);">
     <nav class="navbar navbar-expand-lg ">
       <div class="container-fluid">
         <i class="fa-solid fa-tower-cell" style="color: #ff9742;"></i>
@@ -32,7 +34,10 @@
           </form>
       </div>
     </nav>
-    <h2 class="align-middle">test</h2>
+    <div class="container" style="height:150px;"></div>
+    <h1 class="text-center text-white text-shadow" style="font-size:100px;">E.antenna</h1>
+
+  </div>
   </div>
 <% else %>
     <div class="collapse navbar-collapse justify-content-center">
