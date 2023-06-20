@@ -1,3 +1,14 @@
-<h1>Public::Homes#top</h1>
+<div class="container">
+  <div class="row flex-column">
+    <h2 class="text-center heading_sub">Everyone's posts</h2>
+    <% if @random_post %>
+      <div class="mt-5 mb-2">
+        <%= image_tag @random_post.get_image(600,600), class: "d-block mx-auto" %>
+      </div>
+      <p class="text-center"><%= @random_post.created_at.strftime("%Y年%m月%d日") %></p>
+      <%= link_to "詳細を見る", post_path(@random_post) %>
+    <% end %>
+  </div>
+</div>
+
 <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post %>
-<%= image_tag image_url('antenna.jpg') %>
