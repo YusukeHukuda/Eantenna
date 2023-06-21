@@ -1,4 +1,13 @@
 <div class="container mt-4 col-12">
+  <% if @post.errors.any? %>
+    <i class="fa-regular fa-circle-exclamation fa-beat-fade fa-lg" style="color: #ff0000;"></i>
+    <%= @post.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <h3 class="text-center">
     投稿
   </h3>

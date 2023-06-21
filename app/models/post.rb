@@ -11,6 +11,12 @@ class Post < ApplicationRecord
   attr_accessor :name
   has_one_attached :image
 
+  # 文字数の制限
+  validates :title, length: { in: 1..20 }
+  validates :body, length: {in: 1..100 }
+
+  validates :address, presence: true
+
   def self.serach(keyword)
    Post.where(['title LIKE ? OR body LIKE ?', "%#{keyword}%", "%#{keyword}%"])
   end

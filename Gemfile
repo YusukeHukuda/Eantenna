@@ -62,3 +62,4 @@ gem "gmaps4rails"
 gem "geocoder"
 gem 'font-awesome-sass'
 gem 'jquery-rails'
+gem 'rails-i18n'

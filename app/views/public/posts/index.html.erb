@@ -1,24 +1,37 @@
-<div class='container mt-4 col-12'>
-  <h3 class="text-center">投稿一覧</h3>
+<% if flash[:notice] %>
+  <div class="alert text-center">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<div class="container-fluid mt-5">
   <div class="row">
-    <div class="mx-auto">
-      <div class="card-deck" style="width: 60rem;"> <!--カードを横向きに-->
+    <div class="mx-5">
+      <div class="card-deck"> <!--カードを横向きに-->
         <% @posts.each do |post| %>
-        <% post.tags.each do |tag| %>
-          <div class="card">
-            <%= image_tag post.get_image(200, 200) %>
-            <div class="card-body">
-              <h5 class="card-title"><%= post.title %></h5>
-              <p class="card-text"><%= post.body %></p>
-            </div>
-            <div class="m-2">
-              <p class="card-text"><%= link_to "##{tag.name}", posts_path(tag_id: tag.id), class: 'smaller tag_list' %></p>
-                <%= link_to post_path(post.id), class: "btn btn-outline-secondary btn-block" do %>
-                  <h5 class="text-white bg-black">続きを読む</h5>
+
+          <div class="col-md-3 mb-5">
+            <div class="card">
+              <%= image_tag post.get_image(200, 200), class:"card-img-top" %>
+              <div class="card-body">
+                <h5 class="card-title border-bottom"><%= post.title %></h5>
+                <p class="card-text"><%= post.body %></p>
+                <div class="border-bottom">
+                <p class="card-text"><i class="fa-solid fa-user"></i> <%= post.user.name %></p>
+                </div>
+              </div>
+              <div class="m-2">
+                <% post.tags.each do |tag| %>
+                  <p class="tags">
+                    <%= link_to tag.name, posts_path(tag_id: tag.id), class: "text-white" %>
+                    <%= "(#{tag.posts.count})" %>
+                  </p>
                 <% end %>
+                <%= link_to post_path(post.id), class: "btn btn-secondary btn-block" do %>
+                  <h5 class="text-white bg-black">Read more <i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></h5>
+                <% end %>
+              </div>
             </div>
           </div>
-        <% end %>
         <% end %>
       </div>
     </div>

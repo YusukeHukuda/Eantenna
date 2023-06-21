@@ -3,12 +3,19 @@
     <h2 class="text-center heading_sub">Everyone's posts</h2>
     <% if @random_post %>
       <div class="mt-5 mb-2">
+        <p class="text-center"><%= @random_post.created_at.strftime("%Y年%m月%d日") %></p>
         <%= image_tag @random_post.get_image(600,600), class: "d-block mx-auto" %>
       </div>
-      <p class="text-center"><%= @random_post.created_at.strftime("%Y年%m月%d日") %></p>
-      <%= link_to "詳細を見る", post_path(@random_post) %>
+
     <% end %>
   </div>
+  <div class="d-flex justify-content-center my-2">
+  <button class="btn btn-secondary">
+        <%= link_to "Read more", post_path(@random_post), class: "text-white" %>
+        <i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i>
+        </button>
+        </div>
 </div>
-
+<div class="text-right mr-2">
 <%= link_to 'ゲストログイン（閲覧用）', public_guest_sign_in_path, method: :post %>
+</div>

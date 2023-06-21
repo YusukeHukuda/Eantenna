@@ -22,17 +22,17 @@
   background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
 }
 
-.posted_detail_heading {
+.posted_detail_heading { /* 見出しの横線です */
   padding: 1rem 2rem;
   border-left: 4px solid #000;
 }
 
-.posted_detail_comment {
+.posted_detail_comment {  /* 見出しの横線です　コメント用 */
   padding: 0rem 0rem 0rem 0.5rem;
   border-left: 4px solid #000;
 }
 
-.tags {
+.tags { /* タグ用 */
   position: relative;
   display: inline-block;
   padding: 0.5rem 0.5rem 0.5rem 2rem;
