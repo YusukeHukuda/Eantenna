@@ -1,3 +1,8 @@
+<% if flash[:notice] %>
+  <div class="alert alert-dark text-center">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <div class="container mt-5">
   <%= form_with model: [@post_tag,@post], url: post_path do |f| %>
 
@@ -6,7 +11,7 @@
         <%= f.label :image,"画像" %>
       </div>
       <div class="form-group col-lg-4">
-        <%= f.file_field :image, class: "form-control border-dark image", accept: 'image/*' %>
+        <%= f.file_field :image, class: "form-control-file image border-dark image", accept: 'image/*' %>
       </div>
     </div>
 

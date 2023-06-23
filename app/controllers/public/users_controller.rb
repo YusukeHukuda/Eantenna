@@ -1,4 +1,6 @@
 class Public::UsersController < ApplicationController
+  before_action :require_login
+
   def show
     @user = User.find(current_user.id)
     # @user = User.find(params[:id])
@@ -35,6 +37,6 @@ class Public::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :self_introduction, :is_deleted)
+    params.require(:user).permit(:name, :email, :self_introduction, :is_deleted, :profile_image)
   end
 end

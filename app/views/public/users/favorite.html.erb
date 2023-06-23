@@ -1,7 +1,12 @@
-<div class="container">
+<% if flash[:notice] %>
+  <div class="alert alert-dark text-center">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-3">
-      <h4 class="mt-1 pl-1">マイページ</h4>
         <table class='table text-center'>
           <thead>
             <%= image_tag @user.get_image(150,150), class: "rounded-circle mb-2 d-block mx-auto" %>

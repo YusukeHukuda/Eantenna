@@ -1,9 +1,10 @@
-<div class="container mt-5">
-  <div class="row">
-    <p id="notice">
-      <%= notice %>
-    </p>
+<% if flash[:notice] %>
+  <div class="alert alert-dark text-center">
+    <%= flash[:notice] %>
   </div>
+<% end %>
+
+<div class="container mt-5">
     <div class="row">
       <div class="col-md-7">
         <div class="card">

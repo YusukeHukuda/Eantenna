@@ -5,6 +5,9 @@ class Public::PostsController < ApplicationController
     @post = Post.new
     @tag = @post.tags.new
     @tag_lists = Tag.all
+
+    @header_text = "Let's post"
+    @header_text_sub = "投稿ページです。あなたのemotionalを共有しましょう！"
   end
 
   def create

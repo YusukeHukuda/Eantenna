@@ -1,5 +1,5 @@
 <% if flash[:notice] %>
-  <div class="alert text-center">
+  <div class="alert alert-dark text-center">
     <%= flash[:notice] %>
   </div>
 <% end %>
@@ -8,7 +8,6 @@
     <div class="mx-5">
       <div class="card-deck"> <!--カードを横向きに-->
         <% @posts.each do |post| %>
-
           <div class="col-md-3 mb-5">
             <div class="card">
               <%= image_tag post.get_image(200, 200), class:"card-img-top" %>
