@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
 # 顧客用
 # URL /users/sign_in ...
   devise_for :users, controllers: {
@@ -38,10 +38,12 @@ Rails.application.routes.draw do
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:passwords] ,controllers: {
+    registrations: "admin/registrations",
     sessions: "admin/sessions"
   }
 
   namespace :admin do
+    get '/' => "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy]
     end

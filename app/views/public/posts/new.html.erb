@@ -8,10 +8,7 @@
       <% end %>
     </ul>
   <% end %>
-  <h3 class="text-center">
-    投稿
-  </h3>
-  <%#= render "public/shared/error_messages", resource: @post %>
+  
   <div class="row justify-content-center">
     <%= form_with class: "col-md-4", model: [@tag,@post], url: posts_path, method: :post do |f| %>
 
@@ -41,13 +38,6 @@
         <%= f.text_area :body, rows: 3, class: "form-control item_introduction" %>
       </div>
     </div>
-
-      <!--<label class="col-sm-2 control-label">ジャンル</label>-->
-      <!--  <div class="col-sm-10">-->
-      <!--    <div>-->
-      <!--      <%#= f.collection_select :genre_id, Genre.all, :id, :name, class: "dropdown" %>-->
-      <!--    </div>-->
-      <!--  </div>-->
 
       <div class="row mb-3 justify-content-center">
         <%= f.submit "投稿", class: "col-md-2 btn btn-warning btn-lg" %>

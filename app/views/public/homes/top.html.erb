@@ -3,7 +3,7 @@
     <h2 class="text-center heading_sub">Everyone's posts</h2>
     <% if @random_post.present? %>
       <div class="mt-5 mb-2">
-        <p class="text-center"><%= @random_post.created_at.strftime("%Y年%m月%d日") %></p>
+        <p class="text-center"><%= l@random_post.created_at %></p>
         <%= image_tag @random_post.get_image(600,600), class: "d-block mx-auto" %>
       </div>
     <% else %>
