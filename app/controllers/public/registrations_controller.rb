@@ -6,6 +6,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def require_login
+    unless user_signed_in?
+      redirect_to user_session_path # ユーザーログイン画面のパス
+    end
+  end
+
   def ensure_normal_user
     if resource.email == 'guest@example.com'
       redirect_to users_path, alert: 'ゲストユーザーの更新・削除はできません。'
