@@ -1,42 +1,34 @@
 <div class='container col-12 px-5 px-sm-0'>
     <div class="col-md-10 mx-auto">
       <div class="row">
-        <h1 class="mt-4 text-center bg-light">商品一覧</h1>
-        <div class="col text-right">
-          <%= link_to new_admin_item_path,class: 'btn btn-default' do %>
-           <i class="fas fa-plus-circle fa-2x"></i>
-          <% end %>
-        </div>
+        <h1 class="mt-4 text-center bg-light">投稿一覧</h1>
       </div>
 
       <table class='table'>
         <thead>
           <tr>
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜価格</th>
-            <th>ジャンル</th>
-            <th>ステータス</th>
+            <th>投稿ID</th>
+            <th>タイトル</th>
+            <th>本文</th>
+            <th>タグ</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <% @items.each do |item| %>
+          <% @posts.each do |post| %>
+          <% post.tags.each do |tag| %>
           <tr>
-            <td><%= item.id %></td>
-            <td><%= link_to item.name, admin_item_path(item)  %></td>
-            <td><%= item.price %></td>
-            <td><%= item.genre.name %></td>
-            <td><% if item.is_active == false %>
-                    <label>販売停止中</label>
-                <% else %>
-                    <label>販売中</label>
-                <% end %>
-            </td>
-          </tr>
+            <td><%= post.id %></td>
+            <td><%= link_to post.title, admin_post_path(post) %></td>
+            <td><%= post.body.truncate(15) %></td>
+            <td><%= tag.name %></td>
           <% end %>
+          <% end %>
+          <td></td>
+          </tr>
         </tbody>
       </table>
-      <%= paginate @items %>
+      <%= paginate @posts %>
     </div>
   </div>
 </div>

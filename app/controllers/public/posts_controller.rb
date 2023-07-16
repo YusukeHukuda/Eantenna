@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-  before_action :require_login
+  before_action :authenticate_user!
 
   def new
     @post = Post.new

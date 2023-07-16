@@ -1,0 +1,57 @@
+<% if flash[:notice] %>
+  <div class="alert alert-dark text-center">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<div class="container mt-5">
+  <%= form_with model: [@post_tag,@comments,@post], url: admin_post_path do |f| %>
+
+    <div class="row mt-5">
+      <div class="form-group col-lg-1 offset-md-3">
+        <%= f.label :image,"画像" %>
+      </div>
+      <div class="form-group col-lg-4">
+        <%= f.file_field :image, class: "form-control-file image border-dark image", accept: 'image/*' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-1 offset-md-3">
+        <%= f.label :title,"タイトル" %>
+      </div>
+      <div class="form-group col-lg-4">
+        <%= f.text_field :title, autofocus: true, class: "form-control border-dark" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-1 offset-md-3">
+        <%= f.label :name,"タグ" %>
+      </div>
+      <div class="form-group col-lg-4">
+        <%= f.text_field :name,value: @post_tags, class: 'form-control border-dark' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-1 offset-md-3">
+        <%= f.label :address,"住所" %>
+      </div>
+      <div class="form-group col-lg-4">
+        <%= f.text_field :address, class: "form-control border-dark" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-lg-1 offset-md-3">
+        <%= f.label :body,"本文" %>
+      </div>
+      <div class="form-group col-lg-4">
+        <%= f.text_area :body, rows: 7, class: "form-control border-dark" %>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-3 mt-4 text-center"><%= f.submit "Save changes", style: 'width:150px', class: "btn btn-warning" %></div>
+      </div>
+  <% end %>
+</div>

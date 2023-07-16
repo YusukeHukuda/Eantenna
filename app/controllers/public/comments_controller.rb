@@ -1,6 +1,5 @@
 class Public::CommentsController < ApplicationController
-  before_action :require_login
-
+  
     def create
       post = Post.find(params[:post_id])
       comment = current_user.comments.new(comment_params)
@@ -8,6 +7,8 @@ class Public::CommentsController < ApplicationController
       comment.save
       redirect_back(fallback_location: root_path)  #コメント送信後は、一つ前のページへリダイレクトさせる。
     end
+    
+
 
     private
   def comment_params

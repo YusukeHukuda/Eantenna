@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get '/users/information/edit' => "public/users#edit"
   patch '/users/information' => "public/users#update"
   get '/users/favorites' => "public/users#favorite"
+  get '/users/unsubscribe' => 'public/users#unsubscribe'
+  patch '/users/withdraw' => 'public/users#withdraw'
 
   resources :users do
     member do
@@ -45,8 +47,13 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => "homes#top"
     resources :users, only: [:index, :show, :edit, :update]
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :edit, :update, :destroy] do
+      resources :tags, only: [:update]
     end
+    resources :comments, only: [:edit, :destroy]
+  end
+
+
 
      # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   end

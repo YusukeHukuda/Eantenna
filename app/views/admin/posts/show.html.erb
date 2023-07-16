@@ -1,2 +1,58 @@
-<h1>Admin::Posts#show</h1>
-<p>Find me in app/views/admin/posts/show.html.erb</p>
+<h1 class="mt-4 text-center bg-light">投稿詳細</h1>
+<% if flash[:notice] %>
+  <div class="alert alert-dark text-center">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="card">
+          <%= image_tag @post.get_image(600,600) %>
+        </div>
+        </div>
+
+        <div class="col-md-5">
+        <table class="table table-hover table-inverse">
+          <tr>
+            <th>タイトル</th>
+            <th><%= @post.title %></th>
+          </tr>
+          <tr>
+            <th>本文</th>
+            <th><%= @post.body.truncate(15) %></th>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <th><%= @post.address %></th>
+          </tr>
+          <tr>
+            <th>タグ</th>
+            <th>
+              <% @post_tags.each do |tag| %>
+                <%= tag.name %>
+              <% end %>
+            </th>
+          </tr>
+            <th>Setting</th>
+            <td>
+              <%= link_to "編集", edit_admin_post_path(@post.id), class: "btn btn-success btn-sm" %>
+              <%= link_to "削除", admin_post_path(@post), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-danger btn-sm" %>
+            </td>
+        </table>
+        <table class="table table-hover table-inverse">
+            <p class="text-center">コメント</p>
+            <% @comments.each do |comment| %>
+            <tr>
+            <th><%= comment.user.name %></th>
+            <th><%= comment.comment_content %>
+            <%= link_to "削除", admin_comment_path(comment.id), method: :delete, data: { confirm: "このコメントを削除します" }, class: "btn btn-danger btn-sm" %>
+            </th>
+            </tr>
+            <% end %>
+        </table>
+        </div>
+        </div>
+
+</div>

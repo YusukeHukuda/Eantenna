@@ -11,7 +11,7 @@
         <%= image_tag post.get_image(200, 200), class:"card-img-top border" %>
         <div class="card-body">
           <h5 class="card-title border-bottom"><%= post.title %></h5>
-          <p class="card-text"><%= post.body %></p>
+          <p class="card-text"><%= post.body.truncate(15) %></p>
           <div class="border-bottom">
           <p class="card-text"><i class="fa-solid fa-user"></i> <%= post.user.name %></p>
           </div>

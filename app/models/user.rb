@@ -15,12 +15,12 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-      user.id = 1
       user.password = SecureRandom.urlsafe_base64
       user.name = "ゲストユーザー"
       user.self_introduction = "ゲストユーザーとしてログインしています。よろしくお願いします。"
     end
   end
+
 
   def get_image(width, height)
     unless profile_image.attached?

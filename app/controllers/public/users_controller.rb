@@ -6,6 +6,9 @@ class Public::UsersController < ApplicationController
     # @user = User.find(params[:id])
     @posts = @user.posts.page(params[:page]).reverse_order
     @tag_lists = Tag.all
+
+    @header_text = "Your profile"
+    @header_text_sub = ""
   end
 
   def favorite
@@ -19,6 +22,9 @@ class Public::UsersController < ApplicationController
   def edit
     @user = User.find(current_user.id)
     @tag_lists = Tag.all
+
+    @header_text = "Edit profile"
+    @header_text_sub = ""
   end
 
   def update
@@ -31,8 +37,19 @@ class Public::UsersController < ApplicationController
       render :show
     end
   end
-
+  
   def unsubscribe
+    @user = current_user
+  end
+
+  def withdraw
+    @user = current_user
+    @user.is_deleted = true
+    @user.save
+    reset_session
+
+    redirect_to root_path
+    flash[:notice] = "退会処理を実行いたしました"
   end
 
   private
