@@ -62,7 +62,7 @@ class Public::PostsController < ApplicationController
 
     if @post.update(post_params)
        @post.save_posts(post_tags)
-       redirect_to post_path(@post), notice: "変更の保存に成功しました"
+       redirect_to post_path(@post), notice: "変更の保存に成功しました。"
     else
       render :edit
     end
